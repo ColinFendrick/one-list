@@ -12,20 +12,27 @@ const main = () => {
       addListElement()
     }
   })
+
   const addListElement = () => {
     let newText = document.getElementById('textBox').value
     let liAdd = document.createElement('li')
     liAdd.textContent = newText
     document.getElementById('list').appendChild(liAdd)
+    let dblClickEvent = false
     liAdd.addEventListener('click', function (event) {
-      if (liAdd.className) {
-        liAdd.className = null
-      } else {
-        liAdd.className = 'completed'
-      }
+      setTimeout(() => {
+        if (!dblClickEvent) {
+          if (liAdd.className === 'completed') {
+            liAdd.className = null
+          } else {
+            liAdd.className = 'completed'
+          }
+        }
+      }, 300)
     })
     liAdd.addEventListener('dblclick', function (event) {
       liAdd.parentNode.removeChild(liAdd)
+      dblClickEvent = true
     })
   }
 }
