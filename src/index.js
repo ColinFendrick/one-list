@@ -13,6 +13,8 @@ const main = () => {
     }
   })
 
+  // Adding and watnot
+
   const addListElement = () => {
     let newText = document.getElementById('textBox').value
     let liAdd = document.createElement('li')
